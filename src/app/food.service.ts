@@ -17,8 +17,8 @@ export class FoodService {
     return this.http.get(`${this.baseUrl}`);
   }
 
-  addRecipe(employee: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, employee);
+  addRecipe(item: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, item);
   }
 
   editRecipe(id: number, value: any): Observable<Object> {

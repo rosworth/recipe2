@@ -38,14 +38,14 @@ export class EditFoodComponent implements OnInit {
       (error) => console.log(error)
     );
     this.item = new Food();
-    this.gotoList();
+    this.list();
   }
 
   onSubmit() {
     this.patchFood();
   }
 
-  gotoList() {
-    this.router.navigate(['/employees']);
+  list() {
+    this.router.navigate(['/list-food']);
   }
 }

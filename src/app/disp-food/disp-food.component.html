@@ -1,16 +1,16 @@
-<h2>Employee Details</h2>
+<h2>Recipe Details</h2>
 
 <hr />
-<div *ngIf="item">
-  <div>
-    <label><b>First Name: </b></label> {{ item.foodName }}
+<div *ngIf="item" class="mb-4">
+  <div class="mb-3">
+    <img [src]="item.foodImg" class="img-fluid" alt="Image not available."/>
   </div>
   <div>
-    <label><b>Last Name: </b></label> {{ item.foodDesc }}
+    <label><b>Recipe Name: </b></label> {{ item.foodName }}
+  </div>
+  <div>
+    <label><b>Description: </b></label> {{ item.foodDesc }}
   </div>
 </div>
 
-<br />
-<br />
-<button (click)="list()" class="btn btn-primary">Back to Employee List</button
-><br />
+<input (click)="list()" class="btn btn-primary" value="Return" />

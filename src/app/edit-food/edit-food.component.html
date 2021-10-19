@@ -1,32 +1,45 @@
-<h3>Create Employee</h3>
-<div style="width: 400px">
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="itemName" class="form-label">Recipe Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="itemName"
-        name="itemName"
-        placeholder="Shrimp Scampi"
-        [(ngModel)]="item.foodName"
-        required
-      />
-    </div>
+<h3>Edit Recipe</h3>
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group mb-3">
+    <label for="itemName" class="form-label">Recipe Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="itemName"
+      name="itemName"
+      placeholder="Shrimp Scampi"
+      [(ngModel)]="item.foodName"
+      required
+    />
+  </div>
 
-    <div class="form-group">
-      <label for="itemDesc" class="form-label">Description</label>
-      <textarea
-        class="form-control"
-        id="itemDesc"
-        name="itemDesc"
-        rows="3"
-        placeholder="Shrimp Scampi is a food that includes various culinary preparations of certain crustaceans."
-        [(ngModel)]="item.foodDesc"
-        required
-      ></textarea>
-    </div>
+  <div class="form-group mb-3">
+    <label for="itemDesc" class="form-label">Description</label>
+    <textarea
+      class="form-control"
+      id="itemDesc"
+      name="itemDesc"
+      rows="3"
+      placeholder="Shrimp Scampi is a food that includes various culinary preparations of certain crustaceans."
+      [(ngModel)]="item.foodDesc"
+      required
+    ></textarea>
+  </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
-</div>
+    <div class="form-group mb-3">
+    <label for="itemImg" class="form-label">Image URL</label>
+    <input
+      type="url"
+      class="form-control"
+      id="itemImg"
+      name="itemImg"
+      placeholder="http://www.website.com/image.jpg"
+      [(ngModel)]="item.foodImg"
+      required
+    />
+  </div>
+
+
+  <button type="submit" class="btn btn-primary me-1">Submit</button>
+  <button (click)="list()" class="btn btn-primary me-1">Return</button>
+</form>

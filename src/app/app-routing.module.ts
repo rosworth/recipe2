@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AddFoodComponent } from './add-food/add-food.component';
 import { DispFoodComponent } from './disp-food/disp-food.component';
 import { EditFoodComponent } from './edit-food/edit-food.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), RouterTestingModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

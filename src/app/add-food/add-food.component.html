@@ -1,48 +1,59 @@
 <h3>Add Recipe</h3>
-<div [hidden]="submitted">
+<label type="text" id="test"></label>
+<div *ngIf="!submitted">
   <form
     [formGroup]="foodForm"
-    (ngSubmit)="onSubmit()"
+    (ngSubmit)="save()"
     class="needs-validation"
     novalidate
   >
     <div class="mb-3 form-group">
-      <label for="validationCustom01" class="form-label">Recipe Name</label>
+      <label for="foodName" class="form-label">Recipe Name</label>
       <input
         type="text"
         class="form-control"
-        id="validationCustom01"
-        formControlName="itemName"
+        id="foodName"
+        formControlName="foodName"
         placeholder="Shrimp Scampi"
-        [(ngModel)]="item.foodName"
         required
       />
+      <div class="invalid-feedback">Recipe name is required</div>
     </div>
 
     <div class="mb-3 form-group">
-      <label for="itemDesc" class="form-label">Description</label>
+      <label for="foodDesc" class="form-label">Description</label>
       <textarea
         class="form-control"
-        id="itemDesc"
-        formControlName="itemDesc"
+        id="foodDesc"
+        formControlName="foodDesc"
         rows="3"
         placeholder="Shrimp Scampi is a food that includes various culinary preparations of certain crustaceans."
-        [(ngModel)]="item.foodDesc"
         required
       ></textarea>
+      <div class="invalid-feedback">Recipe description is required</div>
     </div>
 
-    <input class="btn btn-primary" type="submit" value="Submit" />
-    <input
-      class="btn btn-primary"
-      type="reset"
-      value="Reset"
-      style="margin-left: .5em"
-    />
+    <div class="form-group mb-3">
+      <label for="foodImg" class="form-label">Image URL</label>
+      <input
+        type="url"
+        class="form-control"
+        id="foodImg"
+        formControlName="foodImg"
+        placeholder="http://www.website.com/image.jpg"
+        required
+      />
+      <div class="invalid-feedback">Missing/Invalid image URL</div>
+    </div>
+
+    <button class="btn btn-primary me-1" type="submit" value="Submit">
+      Submit
+    </button>
+    <input class="btn btn-primary me-1" type="reset" value="Reset" />
   </form>
 </div>
 
-<div [hidden]="!submitted">
+<div *ngIf="submitted">
   <h4>You submitted successfully!</h4>
   <input class="btn btn-success" (click)="addItem()" value="Add New Item" />
 </div>

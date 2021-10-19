@@ -1,18 +1,27 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>Employee List</h2>
+    <h2>Recipe List</h2>
   </div>
   <div class="panel-body">
     <table class="table">
       <thead>
         <tr>
+          <th></th>
           <th>Recipe Name</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let i of items | async">
-          <td style="vertical-align: middle;">{{ i.foodName }}</td>
+          <td>
+            <img
+              [src]="i.foodImg"
+              class="img-thumbnail img-fluid"
+              alt="Image not available."
+              style="height: 150px;"
+            />
+          </td>
+          <td style="vertical-align: middle">{{ i.foodName }}</td>
           <td class="row row-cols-lg-auto g-3 align-items-center">
             <span class="col-12">
               <button (click)="deleteFood(i.id)" class="btn btn-danger">

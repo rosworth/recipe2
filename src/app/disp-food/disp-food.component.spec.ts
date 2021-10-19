@@ -1,6 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { DispFoodComponent } from './disp-food.component';
+
 
 describe('DispFoodComponent', () => {
   let component: DispFoodComponent;
@@ -8,9 +10,9 @@ describe('DispFoodComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DispFoodComponent ]
-    })
-    .compileComponents();
+      declarations: [DispFoodComponent],
+      imports: [RouterTestingModule, HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -13,38 +13,59 @@ export class AddFoodComponent implements OnInit {
   item: Food = new Food();
   submitted = false;
   foodForm!: FormGroup;
-  itemName!: FormControl;
-  itemDesc!: FormControl;
 
   constructor(private fs: FoodService, private router: Router) {}
 
   ngOnInit() {
     this.foodForm = new FormGroup({
-      itemName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-      ]),
-      itemDesc: new FormControl('', Validators.required),
+      foodName: new FormControl('', Validators.required),
+      foodDesc: new FormControl('', Validators.required),
+      foodImg: new FormControl('', Validators.pattern(/\.(jpeg|jpg|gif|png)$/)),
     });
   }
 
   addItem(): void {
     this.submitted = false;
     this.item = new Food();
+    this.foodForm.reset();
+  }
+
+  tester() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        'submit',
+        function (event: {
+          preventDefault: () => void;
+          stopPropagation: () => void;
+        }) {
+          if (!form.checkValidity()) {
+            console.log(1);
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        },
+        false
+      );
+      form.reportValidity();
+    });
   }
 
   save() {
-    this.fs.addRecipe(this.item).subscribe(
-      (data) => console.log(data),
-      (error) => console.log(error)
-    );
-    this.item = new Food();
-    this.gotoList();
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    this.save();
+    this.tester();
+    if (this.foodForm.valid) {
+      this.fs.addRecipe(this.item).subscribe(
+        (data) => console.log(data),
+        (error) => console.log(error)
+      );
+      this.item = new Food();
+      this.gotoList();
+      this.submitted = true;
+    }
   }
 
   gotoList() {

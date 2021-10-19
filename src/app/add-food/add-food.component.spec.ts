@@ -1,5 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { AddFoodComponent } from './add-food.component';
 
 describe('AddFoodComponent', () => {
@@ -8,9 +9,9 @@ describe('AddFoodComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddFoodComponent ]
-    })
-    .compileComponents();
+      declarations: [AddFoodComponent],
+      imports: [RouterTestingModule, HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

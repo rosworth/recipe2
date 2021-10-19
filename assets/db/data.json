@@ -4,6 +4,7 @@
       "id": 1,
       "foodName": "potatoes",
       "foodDesc": "potatoes",
+      "foodImg": "https://img.apmcdn.org/4b2716626c9ff3f6e5dfebe520eb592c33cf1e7b/uncropped/173a8f-splendid-table-french-fries.jpg",
       "ingr": "potatoes"
     },
     {
@@ -17,16 +18,9 @@
       "id": 3
     },
     {
-      "foodName": "t",
-      "id": 8
-    },
-    {
-      "foodName": "a",
-      "id": 9
-    },
-    {
-      "foodName": "asdf",
-      "id": 10
+      "foodName": "chicken",
+      "foodDesc": "dark meat",
+      "id": 11
     }
   ]
 }
