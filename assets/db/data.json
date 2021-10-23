@@ -1,16 +1,14 @@
 {
   "food": [
     {
-      "id": 1,
-      "foodName": "potatoes",
-      "foodDesc": "potatoes",
-      "foodImg": "https://img.apmcdn.org/4b2716626c9ff3f6e5dfebe520eb592c33cf1e7b/uncropped/173a8f-splendid-table-french-fries.jpg",
-      "ingr": "potatoes"
-    },
-    {
-      "foodName": "fish",
-      "foodDesc": "test",
-      "id": 2
+      "foodName": "french fries",
+      "foodDesc": "fries",
+      "foodImg": "https://i.imgur.com/PXMr13y.jpeg",
+      "foodIngr": [
+        "potatoes",
+        "salt"
+      ],
+      "id": 1
     },
     {
       "foodName": "pasta",
@@ -21,6 +19,17 @@
       "foodName": "chicken",
       "foodDesc": "dark meat",
       "id": 11
+    },
+    {
+      "foodName": "fish",
+      "foodDesc": "fresh fish 2",
+      "foodImg": "https://cdn.pixabay.com/photo/2017/04/25/16/44/fish-free-2260215_1280.png",
+      "foodIngr": [
+        "test",
+        "fish",
+        "3rd"
+      ],
+      "id": 12
     }
   ]
 }

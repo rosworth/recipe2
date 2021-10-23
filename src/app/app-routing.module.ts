@@ -7,7 +7,7 @@ import { EditFoodComponent } from './edit-food/edit-food.component';
 import { ListFoodComponent } from './list-food/list-food.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'list-food', pathMatch: 'full' },
   { path: 'add-food', component: AddFoodComponent },
   { path: 'disp-food/:id', component: DispFoodComponent },
   { path: 'list-food', component: ListFoodComponent },

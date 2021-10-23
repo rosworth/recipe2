@@ -10,11 +10,17 @@ import { FoodService } from '../food.service';
   styleUrls: ['./list-food.component.css'],
 })
 export class ListFoodComponent implements OnInit {
-  items: Observable<Food[]> | undefined;
+  items: Observable<Food[]> | any;
+  selectedid!: number;
 
-  constructor(private fs: FoodService, private router: Router) {}
-  ngOnInit() {
+  constructor(private fs: FoodService, private router: Router) {
     this.reloadData();
+  }
+  
+  ngOnInit() {}
+
+  thisone(id: number) {
+    this.selectedid = id;
   }
 
   reloadData() {

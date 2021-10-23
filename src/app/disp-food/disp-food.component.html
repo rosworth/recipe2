@@ -3,14 +3,35 @@
 <hr />
 <div *ngIf="item" class="mb-4">
   <div class="mb-3">
-    <img [src]="item.foodImg" class="img-fluid" alt="Image not available."/>
+    <img
+      [src]="item.foodImg"
+      class="img-fluid"
+      style="height: 35vmin"
+      alt="Image not available."
+    />
   </div>
-  <div>
-    <label><b>Recipe Name: </b></label> {{ item.foodName }}
+  <div class="mb-3">
+    <label><b>ID: </b></label> {{ item.id }}
   </div>
-  <div>
+  <div class="mb-3">
+    <label><b>Recipe Name: </b></label> {{ item.foodName | titlecase }}
+  </div>
+  <div class="mb-3">
     <label><b>Description: </b></label> {{ item.foodDesc }}
+  </div>
+  <div>
+    <label><b>Ingredients: </b></label>
+    <div *ngFor="let i of item.foodIngr" class="list-group list-group-flush">
+      <div class="list-group-item">
+        {{ i | titlecase }}
+      </div>
+      <small *ngIf="!item.foodIngr"> No ingredients listed. </small>
+    </div>
   </div>
 </div>
 
-<input (click)="list()" class="btn btn-primary" value="Return" />
+<input
+  (click)="list()"
+  class="btn btn-outline-primary"
+  value="Return to List"
+/>

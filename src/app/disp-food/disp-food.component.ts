@@ -20,12 +20,10 @@ export class DispFoodComponent implements OnInit {
 
   ngOnInit() {
     this.item = new Food();
-
     this.id = this.route.snapshot.params['id'];
 
     this.fs.getRecipe(this.id).subscribe(
       (data) => {
-        console.log(data);
         this.item = data;
       },
       (error) => console.log(error)

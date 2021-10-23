@@ -1,59 +1,72 @@
 <h3>Add Recipe</h3>
-<label type="text" id="test"></label>
 <div *ngIf="!submitted">
-  <form
-    [formGroup]="foodForm"
-    (ngSubmit)="save()"
-    class="needs-validation"
-    novalidate
-  >
+  <form [formGroup]="foodForm" (ngSubmit)="save()" novalidate>
     <div class="mb-3 form-group">
-      <label for="foodName" class="form-label">Recipe Name</label>
+      <label class="form-label"> Recipe Name </label>
       <input
         type="text"
         class="form-control"
-        id="foodName"
+        name="foodName"
         formControlName="foodName"
         placeholder="Shrimp Scampi"
         required
       />
-      <div class="invalid-feedback">Recipe name is required</div>
+      <small *ngIf="foodName?.touched && foodName?.invalid">
+        Missing recipe name
+      </small>
     </div>
 
     <div class="mb-3 form-group">
-      <label for="foodDesc" class="form-label">Description</label>
+      <label class="form-label"> Description </label>
       <textarea
         class="form-control"
-        id="foodDesc"
+        name="foodDesc"
         formControlName="foodDesc"
         rows="3"
         placeholder="Shrimp Scampi is a food that includes various culinary preparations of certain crustaceans."
         required
       ></textarea>
-      <div class="invalid-feedback">Recipe description is required</div>
+      <small *ngIf="foodDesc?.touched && foodDesc?.invalid">
+        Missing recipe description
+      </small>
     </div>
 
     <div class="form-group mb-3">
-      <label for="foodImg" class="form-label">Image URL</label>
+      <label class="form-label"> Image URL </label>
       <input
         type="url"
         class="form-control"
-        id="foodImg"
+        name="foodImg"
         formControlName="foodImg"
         placeholder="http://www.website.com/image.jpg"
         required
       />
-      <div class="invalid-feedback">Missing/Invalid image URL</div>
+      <small *ngIf="foodImg?.touched && foodImg?.invalid">
+        Missing/Invalid image URL
+      </small>
     </div>
 
-    <button class="btn btn-primary me-1" type="submit" value="Submit">
+    <button
+      class="btn btn-outline-primary me-1"
+      type="submit"
+      [disabled]="foodForm.invalid"
+    >
       Submit
     </button>
-    <input class="btn btn-primary me-1" type="reset" value="Reset" />
+    <input class="btn btn-outline-primary me-1" type="reset" value="Reset" />
   </form>
 </div>
 
 <div *ngIf="submitted">
   <h4>You submitted successfully!</h4>
-  <input class="btn btn-success" (click)="addItem()" value="Add New Item" />
+  <input
+    class="btn btn-outline-primary me-1"
+    (click)="addItem()"
+    value="Add New Item"
+  />
+  <input
+    class="btn btn-outline-primary"
+    (click)="gotoList()"
+    value="Return to List"
+  />
 </div>

@@ -1,45 +1,105 @@
 <h3>Edit Recipe</h3>
-<form (ngSubmit)="onSubmit()">
-  <div class="form-group mb-3">
-    <label for="itemName" class="form-label">Recipe Name</label>
+<form [formGroup]="foodForm" (ngSubmit)="patchFood()" novalidate>
+  <!-- Name Input: required -->
+
+  <div class="mb-3 form-group">
+    <label class="form-label"> Recipe Name </label>
     <input
       type="text"
       class="form-control"
-      id="itemName"
-      name="itemName"
+      name="foodName"
+      formControlName="foodName"
       placeholder="Shrimp Scampi"
       [(ngModel)]="item.foodName"
       required
     />
+    <small *ngIf="foodName?.touched && foodName?.invalid">
+      Missing recipe name
+    </small>
   </div>
 
-  <div class="form-group mb-3">
-    <label for="itemDesc" class="form-label">Description</label>
+  <!-- Description Input: required -->
+
+  <div class="mb-3 form-group">
+    <label class="form-label"> Description </label>
     <textarea
       class="form-control"
-      id="itemDesc"
-      name="itemDesc"
+      name="foodDesc"
+      formControlName="foodDesc"
       rows="3"
       placeholder="Shrimp Scampi is a food that includes various culinary preparations of certain crustaceans."
       [(ngModel)]="item.foodDesc"
       required
     ></textarea>
+    <small *ngIf="foodDesc?.touched && foodDesc?.invalid">
+      Missing recipe description
+    </small>
   </div>
 
-    <div class="form-group mb-3">
-    <label for="itemImg" class="form-label">Image URL</label>
+  <!-- Image Input: required -->
+
+  <div class="form-group mb-3">
+    <label class="form-label"> Image URL </label>
     <input
       type="url"
       class="form-control"
-      id="itemImg"
-      name="itemImg"
+      name="foodImg"
+      formControlName="foodImg"
       placeholder="http://www.website.com/image.jpg"
       [(ngModel)]="item.foodImg"
       required
     />
+    <small *ngIf="foodImg?.touched && foodImg?.invalid">
+      Missing/Invalid image URL
+    </small>
   </div>
 
+  <!-- Ingredients Input -->
 
-  <button type="submit" class="btn btn-primary me-1">Submit</button>
-  <button (click)="list()" class="btn btn-primary me-1">Return</button>
+  <div class="form-group mb-3">
+    <label class="form-label"> Ingredients </label>
+    <div
+      formArrayName="foodIngr"
+      *ngFor="let f of getIngr.controls; let i = index"
+    >
+      <div class="input-group mb-1">
+        <input
+          [formControlName]="i"
+          name="foodIngr"
+          [(ngModel)]="item.foodIngr[i]"
+          type="text"
+          class="form-control"
+          placeholder="Shrimp"
+        />
+        <button
+          (click)="delIngr(i)"
+          class="btn btn-outline-danger"
+          type="button"
+        >
+          Delete
+        </button>
+      </div>
+      <p>{{ foodForm.controls.foodIngr.value[i] }}</p>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <button
+    class="btn btn-outline-primary me-1"
+    type="submit"
+    [disabled]="foodForm.invalid"
+    (click)="tester()"
+  >
+    Submit
+  </button>
+  <button type="button" (click)="list()" class="btn btn-outline-primary me-1">
+    Return
+  </button>
+  <button
+    type="button"
+    (click)="addIngr()"
+    class="btn btn-outline-primary me-1"
+  >
+    Add More Ingredients
+  </button>
 </form>

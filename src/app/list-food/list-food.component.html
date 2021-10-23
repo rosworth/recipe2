@@ -1,9 +1,54 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h2>Recipe List</h2>
+<h2>Recipe List</h2>
+<hr />
+<div class="row">
+  <div class="col-4">
+    <div class="list-group" *ngFor="let i of items | async">
+      <button
+        type="menu"
+        class="list-group-item list-group-item-action"
+        (click)="thisone(i.id)"
+      >
+        {{ i.foodName | titlecase }}
+      </button>
+    </div>
   </div>
-  <div class="panel-body">
-    <table class="table">
+  <div class="col-8">
+    <span [ngSwitch]="selectedid">
+      <div *ngFor="let f of items | async">
+        <output *ngSwitchCase="f.id">
+          <div class="mb-3">
+            <img
+              [src]="f.foodImg"
+              class="img-fluid rounded img-thumbnail"
+              style="height: 35vmin"
+              alt="Image not available"
+            />
+          </div>
+          <div class="mb-3">Recipe Name: {{ f.foodName | titlecase }}</div>
+          <div class="mb-3">Description: {{ f.foodDesc }}</div>
+          <div class="align-items-center">
+            <span class="me-1">
+              <button (click)="deleteFood(f.id)" class="btn btn-outline-danger">
+                Delete
+              </button>
+            </span>
+            <span class="me-1">
+              <button (click)="editFood(f.id)" class="btn btn-outline-primary">
+                Update
+              </button>
+            </span>
+            <span class="me-1">
+              <button (click)="foodInfo(f.id)" class="btn btn-outline-primary">
+                View Recipe
+              </button>
+            </span>
+          </div>
+        </output>
+      </div>
+    </span>
+  </div>
+</div>
+<!--     <table class="table">
       <thead>
         <tr>
           <th></th>
@@ -42,5 +87,4 @@
         </tr>
       </tbody>
     </table>
-  </div>
-</div>
+ -->
