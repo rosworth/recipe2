@@ -11,10 +11,8 @@ import { FoodService } from '../food.service';
 })
 export class EditFoodComponent implements OnInit {
   id!: number;
-  i!: number;
   item!: Food;
   foodForm!: FormGroup;
-  foodIngr!: FormArray;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +24,7 @@ export class EditFoodComponent implements OnInit {
       foodName: ['', Validators.required],
       foodDesc: ['', Validators.required],
       foodImg: ['', Validators.pattern(/(https?:\/\/.*\.(?:png|jpg|jpeg))/i)],
-      foodIngr: this.fb.array([this.fb.control('')]),
+      foodIngr: this.fb.array([this.fb.control(false)]),
     });
   }
 
@@ -36,7 +34,6 @@ export class EditFoodComponent implements OnInit {
 
     this.fs.getRecipe(this.id).subscribe(
       (data) => {
-        console.log(data);
         this.item = data;
         for (let i = 0; i < this.item.foodIngr.length; i++) {
           this.addIngr();
@@ -44,7 +41,6 @@ export class EditFoodComponent implements OnInit {
       },
       (error) => console.log(error)
     );
-    console.log(this.getIngr.value);
   }
 
   get foodName() {
@@ -62,30 +58,49 @@ export class EditFoodComponent implements OnInit {
 
   addIngr() {
     let newIngr = this.foodForm.get('foodIngr') as FormArray;
-    newIngr.push(this.fb.control(''));
+    newIngr.push(this.fb.control(false));
   }
 
   delIngr(i: number) {
-    this.getIngr.removeAt(i - 1);
+    this.item.foodIngr.splice(i, 1);
+    this.getIngr.removeAt(i);
   }
 
   patchFood() {
+    this.removeNull();
     this.fs.editRecipe(this.id, this.foodForm.value).subscribe(
       (data) => console.log(data),
       (error) => console.log(error)
     );
-    this.list();
+    this.gotoList();
   }
 
-  tester() {
-    console.log(this.foodForm.value);
+  removeNull() {
+    console.log(this.getIngr.length);
+    let i = 0;
+    do {
+      switch (this.getIngr.value[i]) {
+        case null: {
+          this.getIngr.removeAt(i);
+          break;
+        }
+        case undefined: {
+          this.getIngr.removeAt(i);
+          break;
+        }
+        case '': {
+          this.getIngr.removeAt(i);
+          break;
+        }
+        default: {
+          i++;
+          break;
+        }
+      }
+    } while (i < this.getIngr.length);
   }
 
-  onSubmit() {
-    //this.patchFood();
-  }
-
-  list() {
+  gotoList() {
     this.router.navigate(['/list-food']);
   }
 }

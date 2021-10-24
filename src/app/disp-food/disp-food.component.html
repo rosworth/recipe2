@@ -25,8 +25,8 @@
       <div class="list-group-item">
         {{ i | titlecase }}
       </div>
-      <small *ngIf="!item.foodIngr"> No ingredients listed. </small>
     </div>
+    <div *ngIf="item.foodIngr.length < 1">No ingredients listed.</div>
   </div>
 </div>
 

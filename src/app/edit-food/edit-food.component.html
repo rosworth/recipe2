@@ -1,9 +1,10 @@
 <h3>Edit Recipe</h3>
-<form [formGroup]="foodForm" (ngSubmit)="patchFood()" novalidate>
+<form [formGroup]="foodForm" novalidate>
   <!-- Name Input: required -->
 
   <div class="mb-3 form-group">
     <label class="form-label"> Recipe Name </label>
+
     <input
       type="text"
       class="form-control"
@@ -22,6 +23,7 @@
 
   <div class="mb-3 form-group">
     <label class="form-label"> Description </label>
+
     <textarea
       class="form-control"
       name="foodDesc"
@@ -40,6 +42,7 @@
 
   <div class="form-group mb-3">
     <label class="form-label"> Image URL </label>
+
     <input
       type="url"
       class="form-control"
@@ -71,6 +74,7 @@
           class="form-control"
           placeholder="Shrimp"
         />
+
         <button
           (click)="delIngr(i)"
           class="btn btn-outline-danger"
@@ -79,7 +83,6 @@
           Delete
         </button>
       </div>
-      <p>{{ foodForm.controls.foodIngr.value[i] }}</p>
     </div>
   </div>
 
@@ -88,18 +91,24 @@
     class="btn btn-outline-primary me-1"
     type="submit"
     [disabled]="foodForm.invalid"
-    (click)="tester()"
+    (click)="patchFood()"
   >
-    Submit
+    Update Recipe
   </button>
-  <button type="button" (click)="list()" class="btn btn-outline-primary me-1">
-    Return
+
+  <button
+    type="button"
+    (click)="gotoList()"
+    class="btn btn-outline-primary me-1"
+  >
+    Return to List
   </button>
+
   <button
     type="button"
     (click)="addIngr()"
     class="btn btn-outline-primary me-1"
   >
-    Add More Ingredients
+    Add Another Ingredient
   </button>
 </form>
