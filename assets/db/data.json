@@ -2,7 +2,7 @@
   "food": [
     {
       "foodName": "french fries",
-      "foodDesc": "fries",
+      "foodDesc": "fried potatoes",
       "foodImg": "https://i.imgur.com/PXMr13y.jpeg",
       "foodIngr": [
         "potatoes",
@@ -11,8 +11,8 @@
       "id": 1
     },
     {
-      "foodName": "fish",
-      "foodDesc": "fresh fish 2",
+      "foodName": "baked salmon",
+      "foodDesc": "fresh fish",
       "foodImg": "https://i.imgur.com/7oH6qqB.jpeg",
       "foodIngr": [],
       "id": 12
@@ -20,22 +20,22 @@
     {
       "foodName": "grilled cheese",
       "foodDesc": "grilled cheese sandwich",
-      "foodImg": "https://i.imgur.com/r6pRFIH.jpeg",
+      "foodImg": "https://i.imgur.com/DUMo3A4.jpeg",
       "foodIngr": [
         "bread",
-        "provolone",
         "swiss",
-        "cheddar",
-        "butter"
+        "cheddar"
       ],
       "id": 13
     },
     {
-      "foodName": "delete",
-      "foodDesc": "remove recipe",
-      "foodImg": "",
-      "foodIngr": [],
-      "id": 14
+      "foodName": "brisket",
+      "foodDesc": "smoked for 15 hours",
+      "foodImg": "https://i.imgur.com/mtOyacz.jpeg",
+      "foodIngr": [
+        "beef"
+      ],
+      "id": 15
     }
   ]
 }
